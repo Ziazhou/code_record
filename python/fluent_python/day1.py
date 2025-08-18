@@ -76,7 +76,7 @@ class Vector:
 
 a = Vector(3,4)
 b = Vector(2,1)
-c = Vector(3,1)
+
 print(a+b)
 print(a*3)
 print(abs(a))
