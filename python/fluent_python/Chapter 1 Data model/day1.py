@@ -49,34 +49,43 @@
 # endregion
 
 # region
-import math
-class Vector:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
+# import math
+# class Vector:
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
     
-    def __repr__(self):
-        return f'Vector({self.x},{self.y})'
+#     def __repr__(self):
+#         return f'Vector({self.x},{self.y})'
     
-    def __abs__(self):
-        return math.hypot(self.x,self.y)
+#     def __abs__(self):
+#         return math.hypot(self.x,self.y)
     
-    def __bool__(self):
-        return bool(abs(self))
+#     def __bool__(self):
+#         return bool(abs(self))
     
-    def __add__(self,other):
-        x = self.x + other.x
-        y = self.y + other.y
-        return Vector(x,y)
+#     def __add__(self,other):
+#         x = self.x + other.x
+#         y = self.y + other.y
+#         return Vector(x,y)
     
-    def __mul__(self,scalar):
-        return Vector(self.x * scalar, self.y * scalar)
+#     def __mul__(self,scalar):
+#         return Vector(self.x * scalar, self.y * scalar)
+# a = Vector(3,4)
+# b = Vector(2,1)
+
+# print(a+b)
+# print(a*3)
+# print(abs(a))
 
 # endregion
 
-a = Vector(3,4)
-b = Vector(2,1)
+# region
 
-print(a+b)
-print(a*3)
-print(abs(a))
+# __repr__
+#给repr函数使用，可使用!r
+
+#__str__
+#给str函数使用，print函数调用
+
+# endregion
