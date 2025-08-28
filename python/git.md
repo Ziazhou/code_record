@@ -49,12 +49,6 @@ git branch -a
 
 
 
-
-
-
-
-
-
 切换到主分支（如main）并拉取最新代码：
 git checkout main  
 git pull origin main
@@ -72,4 +66,74 @@ git checkout -b xxx origin/xxx	创建本地分支并跟踪远程分支
 git push -u origin xxx	首次推送并设置上游跟踪（后续直接 git push）
 git pull --rebase	拉取远程变更并保持线性提交历史
 ~~~
+
+**基于已存在的远程分支，创建一个新的本地分支**
+
+~~~ shell
+# 1. 查看所有远程分支（确认存在）
+git branch -r
+
+# 2. 获取最新远程信息
+git fetch
+
+# 3. 创建本地分支并关联（不会报错！）
+git checkout -b your-branch-name origin/your-branch-name
+
+# 查看当前分支的跟踪关系
+git branch -vv
+
+# 输出示例：
+* your-branch-name  a1b2c3d [origin/your-branch-name] Commit message
+~~~
+
+基于不存在的远程分支，创建一个新的本地分支
+
+方法一
+
+~~~ shell
+# 1. 基于主分支创建简洁的本地分支
+git checkout -b login-page main
+
+# 2. 开发完成后推送并设置跟踪
+git push -u origin feature/login-page
+
+# 3. 验证跟踪关系
+git branch -vv
+# 输出应为：* login-page  xxxxx [origin/feature/login-page] ...
+~~~
+
+方法二
+
+~~~shell
+# 1. 确保在最新主分支
+git checkout main
+git pull
+
+# 2. 创建新特性分支（本地）
+git checkout -b payment-integration
+
+# 3. 开发并提交
+git add .
+git commit -m "Add payment feature"
+
+# 4. 首次推送 - 创建远程分支并建立跟踪
+git push -u origin feature/payment-integration
+
+# 5. 验证成功
+git branch -vv
+# 应显示：* payment-integration  xxxxx [origin/feature/payment-integration] ...
+~~~
+
+Git 多行提交注释的正确方法 
+
+~~~ shell
+git commit -m "第一行：简短标题（50字符内）" -m "第二行：详细描述开始
+第三行：可以继续描述
+第四行：支持任意多行"
+
+使用编辑器（最标准）
+git commit
+~~~
+
+
 
