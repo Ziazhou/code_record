@@ -31,6 +31,30 @@ Github pr 通过，merge完后 建议勾选删除分支，然后在本地输入�
 merge完后 勾选删除分支 ==
 git push origin --delete <branch>
 
+# 1. 保存当前修改（如有）
+git add . && git commit -m "临时保存"  # 或 git stash
+
+# 2. 切换到主分支
+git checkout main
+
+# 3. 同步远程信息并清理无效引用
+git fetch --prune
+
+# 4. 删除本地分支A
+git branch -d branchA  # 或 git branch -D branchA
+
+# 5. 验证结果
+git branch -a
+
+
+
+
+
+
+
+
+
+
 切换到主分支（如main）并拉取最新代码：
 git checkout main  
 git pull origin main
